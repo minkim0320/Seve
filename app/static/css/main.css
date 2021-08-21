@@ -1,8 +1,17 @@
-html {
-    background-image: url('../img/assets/notepaper.jpeg');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+
+html,body {
+    font-family: "Quicksand", sans-serif;;
+}
+
+.container {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.webp');
     background-color: rgba(255,255,255,0.55);
     background-blend-mode: lighten;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
 
 
