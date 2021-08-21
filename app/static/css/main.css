@@ -2,6 +2,7 @@ html {
     background-image: url('../img/assets/notepaper.jpeg');
     background-color: rgba(255,255,255,0.55);
     background-blend-mode: lighten;
+    background-repeat: no-repeat;
 }
 
 
