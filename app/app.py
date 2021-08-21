@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['IMAGE_UPLOADS'] = '/Users/iriskim/code/Temp-Name/app/static/img/uploads'
+app.config['IMAGE_UPLOADS'] = './static/img/uploads'
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
