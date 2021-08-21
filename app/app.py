@@ -22,10 +22,13 @@ def upload_image():
         if request.files:
             image = request.files['image']
 
+            print('Processing Image')
+
             image.save(os.path.join(app.config['IMAGE_UPLOADS'], image.filename))
 
             print('Image saved')
 
+            print(request.url)
             return redirect(request.url)
 
     return render_template('upload_image.html')
@@ -33,7 +36,7 @@ def upload_image():
 @app.route('/home', methods=['GET', 'POST'])
 def send_request():
 
-    file_name = 'Notes.jpg'
+    file_name = 'Notes.JPG'
     folder_path = cfg.paths["image_path"]
 
     with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
@@ -44,7 +47,7 @@ def send_request():
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
-    # print(response)
+    print(response.full_text_annotation.text)
 
     df = pd.DataFrame(columns=['locale','description'])
     words = []
@@ -55,7 +58,7 @@ def send_request():
             ignore_index=True
         )
     print(words)
-    return str(words)
+    return response.full_text_annotation.text
     # return render_template('upload_image.html')
 
 @app.route('/test', methods=['GET'])

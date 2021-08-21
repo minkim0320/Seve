@@ -24,22 +24,27 @@
 </div>
 
 <script>
-    
-    const Http = new XMLHttpRequest();
-    const url = 'http://localhost:5000/home';
-    Http.open("GET", url);
-    Http.send();
 
-    var temp = '';
 
-    Http.onreadystatechange=(e)=>{
-        console.log(Http.responseText);
-        temp = Http.responseText;
-    }
+    function change_text(){            
+        const Http = new XMLHttpRequest();
+        const url = 'http://localhost:5000/home';
+        Http.open("GET", url);
+        Http.send();
 
-    function change_text(){
+        var temp = '';
+
+        Http.onreadystatechange=(e)=>{
+            console.log(Http.responseText);
+            temp = Http.responseText;
+        }
+        
         var x = document.getElementById('testing');
+        var y = "line\nline2\nline3\nline4";
         if (x.innerHTML === 'text to be changed'){
+            // Section
+            var answer = '';
+            
             x.innerHTML = String(temp);
         }
         else {
