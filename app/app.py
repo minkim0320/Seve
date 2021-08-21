@@ -33,7 +33,7 @@ def upload_image():
 def send_request():
 
     file_name = 'Notes.jpeg'
-    folder_path = r'./static/img/uploads'
+    folder_path = cfg.paths["image_path"]
 
     with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
         content = image_file.read()
