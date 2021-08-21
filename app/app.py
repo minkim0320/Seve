@@ -57,7 +57,7 @@ def send_request():
             dict(locale=text.locale,description=text.description),
             ignore_index=True
         )
-    print(words)
+    # print(words)
     return response.full_text_annotation.text
     # return render_template('upload_image.html')
 
@@ -67,7 +67,6 @@ def json_response():
         "Hackthe6ix": "2021"
     }
     return hackathons
-
 
 if __name__ == '__main__':
     app.run(debug=True)
