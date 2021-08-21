@@ -23,5 +23,4 @@ def upload_image():
     return render_template('upload_image.html')
 
 if __name__ == '__main__':
-    print(cfg.paths["image_path"])
     app.run(debug=True)
