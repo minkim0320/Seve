@@ -17,6 +17,12 @@
         </div>
         <button type='submit' class='btn btn-primary'>Upload image</button>
     </form>
+    <label id = "testing">
+        Welcome to GeeksforGeeks
+    </label>
+    <button onclick="myGeeks()">
+        Click Here!
+    </button>
 </div>
 
 <script>
@@ -25,8 +31,21 @@
     Http.open("GET", url);
     Http.send();
 
+    var temp = "";
+
     Http.onreadystatechange=(e)=>{
         console.log(Http.responseText);
+        temp = Http.responseText;
+    }
+    
+    function myGeeks() {
+        var x = document.getElementById("testing");
+            
+        if (x.innerHTML === "Welcome to GeeksforGeeks") {
+            x.innerHTML = String(temp);
+        } else {
+            x.innerHTML = "Welcome to GeeksforGeeks";
+        }
     }
 </script>
 {% endblock %}
