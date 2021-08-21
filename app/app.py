@@ -52,12 +52,11 @@ def send_request():
     # return response
     return jsonify({'text': 'temp'})
 
-@app.route('/test', methods=['GET'])
+@app.route('/test', methods=['POST'])
 def json_response():
-    hackathons = {
-        "Hackthe6ix": "2021"
-    }
-    return hackathons
+    print(request.data)
+    print(request.form)
+    return {}
 
 if __name__ == '__main__':
     app.run(debug=True)
