@@ -6,6 +6,7 @@ import os, io
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 import pandas as pd
+import json
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = cfg.paths["google_api_name"]
 
@@ -54,6 +55,13 @@ def send_request():
     print(df)
     return render_template('upload_image.html')
 
+@app.route('/test', methods=['GET'])
+def json_response():
+    hackathons = {
+        "Hackthe6ix": "2021"
+    }
+    return hackathons
+
+
 if __name__ == '__main__':
-    
     app.run(debug=True)
