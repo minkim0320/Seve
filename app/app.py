@@ -1,11 +1,12 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from config import config as cfg
 import os
 
 app = Flask(__name__)
 
-app.config['IMAGE_UPLOADS'] = './static/img/uploads'
+app.config['IMAGE_UPLOADS'] = cfg.paths["image_path"]
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
@@ -22,4 +23,5 @@ def upload_image():
     return render_template('upload_image.html')
 
 if __name__ == '__main__':
+    print(cfg.paths["image_path"])
     app.run(debug=True)
