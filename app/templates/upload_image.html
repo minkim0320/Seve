@@ -15,37 +15,37 @@
                 <input type='file' class='custom-file-input' name='image' id='image'>
             </div>
         </div>
-        <button type='submit' class='btn btn-primary'>Upload image</button>
+        <button type='submit' class='btn btn-primary' onclick='change_text()'>Upload image</button>
     </form>
-    <label id = "testing">
-        Welcome to GeeksforGeeks
-    </label>
-    <button onclick="myGeeks()">
-        Click Here!
+    <p id='testing'>text to be changed</p>
+    <button onclick='change_text()'>
+        hihihi
     </button>
 </div>
 
 <script>
+    
     const Http = new XMLHttpRequest();
     const url = 'http://localhost:5000/home';
     Http.open("GET", url);
     Http.send();
 
-    var temp = "";
+    var temp = '';
 
     Http.onreadystatechange=(e)=>{
         console.log(Http.responseText);
         temp = Http.responseText;
     }
-    
-    function myGeeks() {
-        var x = document.getElementById("testing");
-            
-        if (x.innerHTML === "Welcome to GeeksforGeeks") {
+
+    function change_text(){
+        var x = document.getElementById('testing');
+        if (x.innerHTML === 'text to be changed'){
             x.innerHTML = String(temp);
-        } else {
-            x.innerHTML = "Welcome to GeeksforGeeks";
+        }
+        else {
+            x.innerHTML = 'text to be changed'
         }
     }
+
 </script>
 {% endblock %}
