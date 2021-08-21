@@ -29,18 +29,11 @@
 <script>
 
     function change_text() {
-
-        const Http = new XMLHttpRequest();
-        const url = 'http://localhost:5000/home';
-        Http.open("GET", url);
-        Http.send();
-
-        // var temp = '';
-
-        Http.onreadystatechange = (e) => {
-            
-            const temp = JSON.parse(Http.responseText);
-            console.log(temp.text);
+        var url = 'http://localhost:5000/home';
+        fetch(url).then(function (response) {
+           return response.json(); 
+        }).then(function(data) {
+            arr = data.text
 
             var x = document.getElementById('testing');
             var y = "line\nline2\nline3\nline4";
@@ -49,12 +42,15 @@
                 // Section
                 // var answer = String(temp.text).replace(new RegExp('\n', 'g'), '<br>');
                 var answer = y.replace(new RegExp('\n', 'g'), '<br>');
-                x.innerHTML = String(answer);
+                x.innerHTML = answer;
             } else {
                 x.innerHTML = 'text to be changed'
             }
-        }
+
+        });
+        
     }
+
 
 </script>
 
