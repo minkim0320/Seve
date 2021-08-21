@@ -19,7 +19,11 @@
         </div>
         <button type='submit' class='btn btn-primary'>Upload image</button>
     </form>
-    <textarea style='width: 300px; height: 200px;' id='testing' name='testing' readonly></textarea>
+
+    <form actions='/notes-txt' method='POST' enctype='multipart/form-data'>
+        <textarea style='width: 300px; height: 200px;' id='testing' name='testing' readonly></textarea>
+    </form>
+    
     <button onclick='change_text()'>
         hihihi
     </button>
