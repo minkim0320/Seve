@@ -30,7 +30,7 @@
 
     function change_text() {
         var url = 'http://localhost:5000/home';
-        fetch(url).then(function (response) {
+        fetch(url, {mode: 'no-cors'}).then(function (response) {
            return response.json(); 
         }).then(function(data) {
             arr = data.text
