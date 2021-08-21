@@ -2,7 +2,14 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from config import config as cfg
-import os
+import os, io
+from google.cloud import vision
+from google.cloud.vision_v1 import types
+import pandas as pd
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = cfg.paths["google_api_name"]
+
+client = vision.ImageAnnotatorClient()
 
 app = Flask(__name__)
 
@@ -22,5 +29,31 @@ def upload_image():
 
     return render_template('upload_image.html')
 
+@app.route('/home', methods=['GET', 'POST'])
+def send_request():
+
+    file_name = 'Notes.jpeg'
+    folder_path = r'./static/img/uploads'
+
+    with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
+        content = image_file.read()
+    
+    image = types.Image(content=content)
+
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+
+    # print(response)
+
+    df = pd.DataFrame(columns=['locale','description'])
+    for text in texts:
+        df = df.append(
+            dict(locale=text.locale,description=text.description),
+            ignore_index=True
+        )
+    print(df)
+    return render_template('upload_image.html')
+
 if __name__ == '__main__':
+    
     app.run(debug=True)

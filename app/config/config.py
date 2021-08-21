@@ -1,3 +1,4 @@
 paths = {
-  "image_path": "/Users/iriskim/code/Temp-Name/app/static/img/uploads"
+  "image_path": "./static/img/uploads",
+  "google_api_name": r"./config/hackthe6ix2021.json"
 }

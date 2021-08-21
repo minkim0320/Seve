@@ -2,3 +2,4 @@ app/__pycache__/
 app/static/img/uploads/
 
 app/config/
+app/config/config.py
