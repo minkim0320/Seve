@@ -50,7 +50,7 @@ def send_request():
     # response = jsonify({'text': response.full_text_annotation.text.split('\n')})
     # response.headers.add('Access-Control-Allow-Origin','*')
     # return response
-    return "Note"
+    return jsonify({'text': 'temp'})
 
 @app.route('/test', methods=['GET'])
 def json_response():
