@@ -32,7 +32,7 @@ def upload_image():
 @app.route('/home', methods=['GET', 'POST'])
 def send_request():
 
-    file_name = 'Notes.jpeg'
+    file_name = 'design-screenshot.png'
     folder_path = cfg.paths["image_path"]
 
     with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
