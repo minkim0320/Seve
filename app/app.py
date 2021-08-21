@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from config import config as cfg
@@ -36,31 +36,19 @@ def upload_image():
 @app.route('/home', methods=['GET', 'POST'])
 def send_request():
 
-    # file_name = 'Notes.JPG'
-    # folder_path = cfg.paths["image_path"]
+    file_name = 'Notes.JPG'
+    folder_path = cfg.paths["image_path"]
 
-    # with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
-    #     content = image_file.read()
+    with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
+        content = image_file.read()
     
-    # image = types.Image(content=content)
+    image = types.Image(content=content)
 
-    # response = client.text_detection(image=image)
-    # texts = response.text_annotations
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
 
-    # print(response.full_text_annotation.text)
-
-    # df = pd.DataFrame(columns=['locale','description'])
-    # words = []
-    # for text in texts:
-    #     words.append(text.description)
-    #     df = df.append(
-    #         dict(locale=text.locale,description=text.description),
-    #         ignore_index=True
-    #     )
-    # # print(words)
-    # return response.full_text_annotation.text
-    return "Note"
-    # return render_template('upload_image.html')
+    return jsonify({'text': response.full_text_annotation.text.split('\n')})
+    # return "Note"
 
 @app.route('/test', methods=['GET'])
 def json_response():

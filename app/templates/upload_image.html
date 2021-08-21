@@ -35,20 +35,21 @@
         Http.open("GET", url);
         Http.send();
 
-        var temp = '';
+        // var temp = '';
 
         Http.onreadystatechange = (e) => {
-            console.log(Http.responseText);
-            temp = Http.responseText;
+            
+            const temp = JSON.parse(Http.responseText);
+            console.log(temp.text);
 
             var x = document.getElementById('testing');
             var y = "line\nline2\nline3\nline4";
 
             if (x.innerHTML === 'text to be changed') {
                 // Section
-                // var answer = String(temp).replace(new RegExp('\n', 'g'), '<br>');
+                // var answer = String(temp.text).replace(new RegExp('\n', 'g'), '<br>');
                 var answer = y.replace(new RegExp('\n', 'g'), '<br>');
-                x.innerHTML = String(temp);
+                x.innerHTML = String(answer);
             } else {
                 x.innerHTML = 'text to be changed'
             }
