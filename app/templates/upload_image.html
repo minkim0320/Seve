@@ -30,11 +30,11 @@
 
     function change_text() {
         var url = 'http://localhost:5000/home';
-        fetch(url, {mode: 'no-cors'}).then(function (response) {
+        fetch(url).then(function (response) {
            return response.json(); 
         }).then(function(data) {
             arr = data.text
-
+            console.log(arr);
             var x = document.getElementById('testing');
             var y = "line\nline2\nline3\nline4";
 
