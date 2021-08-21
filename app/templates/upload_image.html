@@ -1,58 +1,91 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
 <title>Task Master</title>
 
 {% endblock %}
 
 {% block body %}
+
 <div class='content'>
+
     <h1 style='text-align: center;'>Upload image</h1>
+
     <form actions='/upload-image' method='POST' enctype='multipart/form-data'>
+
         <div class='form-group'>
+
             <label>Select image</label>
+
             <div class='custom-file'>
+
                 <input type='file' class='custom-file-input' name='image' id='image'>
+
             </div>
+
         </div>
+
         <button type='submit' class='btn btn-primary' onclick='change_text()'>Upload image</button>
+
     </form>
+
     <p id='testing'>text to be changed</p>
+
     <button onclick='change_text()'>
+
         hihihi
+
     </button>
+
 </div>
 
 <script>
 
+    function change_text() {
 
-    function change_text(){            
         const Http = new XMLHttpRequest();
+
         const url = 'http://localhost:5000/home';
+
         Http.open("GET", url);
+
         Http.send();
 
         var temp = '';
 
-        Http.onreadystatechange=(e)=>{
+        Http.onreadystatechange = (e) => {
+
             console.log(Http.responseText);
+
             temp = Http.responseText;
+
         }
-        
+
         var x = document.getElementById('testing');
+
         var y = "line\nline2\nline3\nline4";
 
-        if (x.innerHTML === 'text to be changed'){
+        if (x.innerHTML === 'text to be changed') {
+
             // Section
+
             // var answer = String(temp).replace(new RegExp('\n', 'g'), '<br>');
+
             var answer = y.replace(new RegExp('\n', 'g'), '<br>');
-            
+
             x.innerHTML = String(answer);
+
         }
+
         else {
+
             x.innerHTML = 'text to be changed'
+
         }
+
     }
 
 </script>
+
 {% endblock %}
