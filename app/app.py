@@ -47,7 +47,9 @@ def send_request():
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
-    return jsonify({'text': response.full_text_annotation.text.split('\n')})
+    response = jsonify({'text': response.full_text_annotation.text.split('\n')})
+    response.headers.add('Access-Control-Allow-Origin','*')
+    return response
     # return "Note"
 
 @app.route('/test', methods=['GET'])
