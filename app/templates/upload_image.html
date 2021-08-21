@@ -33,11 +33,34 @@
     
     <button onclick='change_text()'>
         hihihi
+    </button>    
+    <button onclick='post_text()'>
+        posting
     </button>
 
 </div>
 
 <script>
+
+    function post_text() {
+        var url = 'http://localhost:5000/test';
+        fetch(url, {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                name: 'hello',
+                password: 'hi'
+            })
+        })
+        .then( (response) => { 
+            //do something awesome that makes the world a better place
+        });
+    }
 
     function change_text() {
         var url = 'http://localhost:5000/home';

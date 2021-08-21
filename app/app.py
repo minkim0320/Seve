@@ -55,7 +55,6 @@ def send_request():
 @app.route('/test', methods=['POST'])
 def json_response():
     print(request.data)
-    print(request.form)
     return {}
 
 if __name__ == '__main__':
