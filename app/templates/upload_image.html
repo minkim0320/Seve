@@ -18,4 +18,15 @@
         <button type='submit' class='btn btn-primary'>Upload image</button>
     </form>
 </div>
+
+<script>
+    const Http = new XMLHttpRequest();
+    const url = 'http://localhost:5000/home';
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange=(e)=>{
+        console.log(Http.responseText);
+    }
+</script>
 {% endblock %}

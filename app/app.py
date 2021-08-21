@@ -33,7 +33,7 @@ def upload_image():
 @app.route('/home', methods=['GET', 'POST'])
 def send_request():
 
-    file_name = 'design-screenshot.png'
+    file_name = 'Notes.jpeg'
     folder_path = cfg.paths["image_path"]
 
     with io.open(os.path.join(folder_path,file_name),'rb') as image_file:
@@ -47,13 +47,16 @@ def send_request():
     # print(response)
 
     df = pd.DataFrame(columns=['locale','description'])
+    words = []
     for text in texts:
+        words.append(text.description)
         df = df.append(
             dict(locale=text.locale,description=text.description),
             ignore_index=True
         )
-    print(df)
-    return render_template('upload_image.html')
+    print(words)
+    return str(words)
+    # return render_template('upload_image.html')
 
 @app.route('/test', methods=['GET'])
 def json_response():
