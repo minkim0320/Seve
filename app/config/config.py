@@ -1,3 +1,3 @@
 paths = {
-  "image_path": "./static/img/uploads"
+  "image_path": "/Users/iriskim/code/Temp-Name/app/static/img/uploads"
 }
