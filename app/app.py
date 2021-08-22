@@ -59,13 +59,10 @@ def send_request():
 @app.route('/test', methods=['POST'])
 def json_response():
     res = request.data
-<<<<<<< HEAD
     my_json = json.loads(res)
     # print(type(my_json))
     # print(my_json)
 
-=======
->>>>>>> 4e4df2643717924c3094ba52769c7de7a0ea2e7c
     data = {
         'Title': my_json['title'],
         'Notes': my_json['notes']
