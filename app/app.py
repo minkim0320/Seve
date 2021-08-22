@@ -61,7 +61,7 @@ def json_response():
     res = request.data
     my_json = json.loads(res)
     # print(type(my_json))
-    # print(my_json)
+    print(my_json)
 
     data = {
         'Title': my_json['title'],
