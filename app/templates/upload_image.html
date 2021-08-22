@@ -11,14 +11,14 @@
 <div class='content'>
     <nav class="navbar navbar-light">
         <a class="navbar-brand" href="/">NoteScan</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick='displaySaved()'>
             <span class="navbar-toggler-icon"></span>
         </button>
         
     </nav>
     <!-- <h1 style='text-align: center;'></h1> -->
     <br><br>
-    <div class="row">
+    <div class="row"  id='divone' >
         <div class="col-sm-6">
             <form actions='/upload-image' method='POST' enctype='multipart/form-data'>
                 <div class='form-group ' style='height:200px'>
@@ -47,9 +47,29 @@
         </div>
     </div>
 
+
+    <div class="row" id='divtwo' style='display:none;'>
+        <h1>HIIII</h1>
+    </div>
+
 </div>
 
 <script>
+
+    function displaySaved() {
+        var x = document.getElementById('divone');
+        var y = document.getElementById('divtwo');
+        // x.style.display = 'none';
+        // y.style.display = 'block';
+
+        if(x.style.display == '' || x.style.display == 'none'){
+            x.style.display = 'inline';
+            y.style.display = 'none';
+        } else if (x.style.display == 'inline') {
+            x.style.display = 'none';
+            y.style.display = 'inline';
+        }
+    }
 
     function PreviewImage() {
         var oFReader = new FileReader();
