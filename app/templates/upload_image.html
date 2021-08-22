@@ -56,6 +56,18 @@
 
 <script>
 
+    function clickTags(title, name) {
+        console.log('in clickTags function');
+        console.log(title);
+        console.log(name);
+        console.log('ending clickTags function');
+
+        var x = document.getElementById('divone');
+        var y = document.getElementById('divtwo');
+        x.style.display = '';
+        y.style.display = 'none';
+    }
+
     function displaySaved() {
         var x = document.getElementById('divone');
         var y = document.getElementById('divtwo');
@@ -88,9 +100,11 @@
             keys = Object.keys(data)
  
             for (var i = 0; i < Object.keys(data).length; i++){
-                var tag2 = document.createElement('a');
+                var tag2 = document.createElement('button');
                 var text2 = document.createTextNode('Title: ' + data[keys[i]]['Title']);
-                tag2.href = "http://google.com";
+                // tag2.href = "http://google.com";
+                tag2.className = 'btn btn-secondary';
+                tag2.setAttribute('onclick', 'clickTags(\`' + data[keys[i]]['Title'] + '\`, \`' + data[keys[i]]['Notes'] + '\`);');
                 tag2.style='text-align:left; background-color:white; color: black; font-weight:bold; text-decoration: none;'
                 tag2.appendChild(text2);
                 var element = document.getElementById("divtwo");
