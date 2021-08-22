@@ -44,6 +44,8 @@
 
     function post_text() {
         var url = 'http://localhost:5000/test';
+        var text = document.getElementById('testing').value
+
         fetch(url, {
             method: "post",
             headers: {
@@ -53,13 +55,13 @@
 
             //make sure to serialize your JSON body
             body: JSON.stringify({
-                name: 'hello',
-                password: 'hi'
+                title: 'hello',
+                notes: text
             })
         })
-        .then( (response) => { 
-            //do something awesome that makes the world a better place
-        });
+        // .then( (response) => { 
+        //     //do something awesome that makes the world a better place
+        // });
     }
 
     function change_text() {

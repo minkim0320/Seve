@@ -52,6 +52,7 @@ def send_request():
     # return response
     return jsonify({'text': 'temp'})
 
+
 @app.route('/test', methods=['POST'])
 def json_response():
     print(request.data)
