@@ -58,11 +58,19 @@ def send_request():
 
 @app.route('/test', methods=['POST'])
 def json_response():
-    print(request.data)
+    res = request.data
+    my_json = json.loads(res)
+    # print(type(my_json))
+    # print(my_json)
+
     data = {
-        'Title': 'min',
-        'Notes': 'line1\nline2\nline3\nline4'
+        'Title': my_json['title'],
+        'Notes': my_json['notes']
     }
+
+    print(data['Title'])
+    print(data['Notes'])
+
     # result = firebase.post('/Notes', data)
     # print(result)
     return {}
