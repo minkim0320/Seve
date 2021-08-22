@@ -16,31 +16,47 @@
         </button>
         
     </nav>
-    <!-- <h1 style='text-align: center;'>Upload image</h1> -->
-    <form actions='/upload-image' method='POST' enctype='multipart/form-data'>
-        <div class='form-group'>
-            <label>Select image</label>
-            <div class='custom-file'>
-                <input type='file' class='custom-file-input' name='image' id='image'>
-            </div>
+    <!-- <h1 style='text-align: center;'></h1> -->
+    <br><br>
+    <div class="row">
+        <div class="col-sm-6">
+            <form actions='/upload-image' method='POST' enctype='multipart/form-data'>
+                <div class='form-group ' style='height:200px'>
+                    <!-- <label>Select image</label> -->
+                    <div class='custom-file'>
+                        <input type='file' class='custom-file-input form-control' name='image' id='image' onchange='PreviewImage();'>
+                        <img id="uploadPreview" />
+                    </div>
+                </div>
+                <button type='submit' class='btn btn-secondary'>Upload image</button>
+            </form>
         </div>
-        <button type='submit' class='btn btn-primary'>Upload image</button>
-    </form>
-
-    <form actions='/notes-txt' method='POST' enctype='multipart/form-data'>
-        <textarea style='width: 300px; height: 200px;' id='testing' name='testing' readonly></textarea>
-    </form>
-    
-    <button onclick='change_text()'>
-        hihihi
-    </button>    
-    <button onclick='post_text()'>
-        posting
-    </button>
+        <div class="col-sm-6">
+            <form actions='/notes-txt' method='POST' enctype='multipart/form-data'>
+                <textarea style='width: 60%; height: 200px;' id='testing' name='testing' readonly></textarea>
+            </form>
+            
+            <button class='btn btn-secondary' onclick='change_text()'>
+                process
+            </button>    
+            <button class='btn btn-secondary' onclick='post_text()'>
+                save
+            </button>
+        </div>
+    </div>
 
 </div>
 
 <script>
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
 
     function post_text() {
         var url = 'http://localhost:5000/test';
