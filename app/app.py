@@ -59,6 +59,12 @@ def send_request():
 @app.route('/test', methods=['POST'])
 def json_response():
     print(request.data)
+    data = {
+        'Title': 'min',
+        'Notes': 'line1\nline2\nline3\nline4'
+    }
+    # result = firebase.post('/Notes', data)
+    # print(result)
     return {}
 
 if __name__ == '__main__':
