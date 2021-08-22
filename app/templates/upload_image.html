@@ -33,7 +33,7 @@
         </div>
         <div class="col-sm-6">
             <form actions='/notes-txt' method='POST' enctype='multipart/form-data'>
-                <input type='text' id='title' style='width:60%;' placeholder="Title"/>
+                <input type='text' id='title' style='width:60%;' placeholder="Title">
                 <br><br>
                 <textarea style='width: 60%; height: 200px;' id='testing' name='testing' readonly></textarea>
             </form>
@@ -66,6 +66,12 @@
         var y = document.getElementById('divtwo');
         x.style.display = '';
         y.style.display = 'none';
+
+        var title_id = document.getElementById('title');
+        var contents_id = document.getElementById('testing');
+
+        title_id.value = title;
+        contents_id.innerHTML = name;
     }
 
     function displaySaved() {
