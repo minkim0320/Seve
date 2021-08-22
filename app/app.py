@@ -62,23 +62,31 @@ def json_response():
     my_json = json.loads(res)
     # print(type(my_json))
     print(my_json)
+    result = firebase.get('/Notes', None)
+    changed = False
+    for key in result:
+        if my_json['title'] == result[key]['Title']:
+            firebase.put('/Notes/'+key,'Notes',my_json['notes'])
+            changed = True
 
-    data = {
-        'Title': my_json['title'],
-        'Notes': my_json['notes']
-    }
 
-    print(data['Title'])
-    print(data['Notes'])
+    if (changed == False):
+        data = {
+            'Title': my_json['title'],
+            'Notes': my_json['notes']
+        }
+        result = firebase.post('/Notes', data)
 
-    result = firebase.post('/Notes', data)
+    # print(data['Title'])
+    # print(data['Notes'])
+
+
     # print(result)
     return {}
 
 @app.route('/notes', methods=['GET'])
 def get_notes():
     result = firebase.get('/Notes', None)
-    # print(result)
     return jsonify(result)
 
 if __name__ == '__main__':
