@@ -53,7 +53,7 @@
 
           for (var i = 0; i < Object.keys(data).length; i++){
               var tag2 = document.createElement('button');
-              var text2 = document.createTextNode('Title: ' + data[keys[i]]['Title']);
+              var text2 = document.createTextNode( data[keys[i]]['Title']);
               // tag2.href = "http://google.com";
               tag2.className = 'btn btn-secondary';
               tag2.setAttribute('onclick', 'clickTags(\`' + data[keys[i]]['Title'] + '\`, \`' + data[keys[i]]['Notes'] + '\`);');
@@ -63,8 +63,8 @@
               element.appendChild(tag2);
 
               var tag = document.createElement("p");
-              var text = document.createTextNode('Notes: ' + data[keys[i]]['Notes']);
-              tag.style='text-align:left; background-color:white;'
+              var text = document.createTextNode(data[keys[i]]['Notes']);
+              tag.style='text-align:left; background-color:white; border: 1px solid black; border-radius: 5px;'
               tag.appendChild(text);
               element.appendChild(tag);
           }
