@@ -59,16 +59,23 @@
     function displaySaved() {
         var x = document.getElementById('divone');
         var y = document.getElementById('divtwo');
-        // x.style.display = 'none';
-        // y.style.display = 'block';
 
-        if(x.style.display == '' || x.style.display == 'none'){
-            x.style.display = 'inline';
+        if( x.style.display == 'none'){
+            console.log('here')
+            x.style.display = '';
             y.style.display = 'none';
-        } else if (x.style.display == 'inline') {
+        } else if (x.style.display == '') {
             x.style.display = 'none';
-            y.style.display = 'inline';
+            y.style.display = '';
         }
+
+        var url = 'http://localhost:5000/notes';
+        fetch(url).then(function (response) {
+           return response.json(); 
+        }).then(function(data) {
+            console.log(data);
+        });
+
     }
 
     function PreviewImage() {
