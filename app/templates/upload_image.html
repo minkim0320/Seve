@@ -77,10 +77,16 @@
             keys = Object.keys(data)
  
             for (var i = 0; i < Object.keys(data).length; i++){
-                var tag = document.createElement("p");
-                var text = document.createTextNode('Title: ' + data[keys[i]]['Title'] + '<br>Notes: ' + data[keys[i]]['Notes']);
-                tag.appendChild(text);
+                var tag2 = document.createElement('a');
+                var text2 = document.createTextNode('Title: ' + data[keys[i]]['Title']);
+                tag2.href = "http://google.com";
+                tag2.appendChild(text2);
                 var element = document.getElementById("divtwo");
+                element.appendChild(tag2);
+
+                var tag = document.createElement("p");
+                var text = document.createTextNode('Notes: ' + data[keys[i]]['Notes']);
+                tag.appendChild(text);
                 element.appendChild(tag);
             }
 
