@@ -10,7 +10,7 @@
 
 <div class='content'>
     <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="/">NoteScan</a>
+        <a class="navbar-brand" href="/"><img id="logo" src="../static/img/uploads/logo.png" width="130" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick='displaySaved()'>
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,11 +21,12 @@
     <div class="row"  id='divone' >
         <div class="col-sm-6">
             <form actions='/upload-image' method='POST' enctype='multipart/form-data'>
-                <div class='form-group ' style='height:200px'>
+                <div class='form-group ' id='tempId' style='height:200px'>
                     <!-- <label>Select image</label> -->
                     <div class='custom-file'>
                         <input type='file' class='custom-file-input form-control' name='image' id='image' onchange='PreviewImage();'>
-                        <img id="uploadPreview" />
+                        <br>
+                        <img id="uploadPreview"/>
                     </div>
                 </div>
                 <button type='submit' class='btn btn-secondary'>Upload image</button>

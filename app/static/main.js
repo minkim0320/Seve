@@ -74,7 +74,13 @@
   }
 
   function PreviewImage() {
-      var oFReader = new FileReader();
+    var x = document.getElementById('uploadPreview');
+    x.style = "width: 400px; height: 300px;"
+
+    
+    var y = document.getElementById('tempId');
+    y.style = "height: 400px;"
+    var oFReader = new FileReader();
       oFReader.readAsDataURL(document.getElementById("image").files[0]);
 
       oFReader.onload = function (oFREvent) {
