@@ -49,7 +49,7 @@
 
 
     <div class="row" id='divtwo' style='display:none;'>
-        <h1>HIIII</h1>
+        <h3>Saved Notes</h3>
     </div>
 
 </div>
@@ -73,6 +73,17 @@
         fetch(url).then(function (response) {
            return response.json(); 
         }).then(function(data) {
+
+            var tempDiv = document.getElementById("divtwo");
+            while(tempDiv.firstChild) {
+                tempDiv.removeChild(tempDiv.firstChild);
+            }
+
+            var savedNotes = document.createElement('h3');
+            savedNotes.innerHTML = 'Saved Notes';
+            var element = document.getElementById("divtwo");
+            element.appendChild(savedNotes);
+
             console.log(data);
             keys = Object.keys(data)
  
@@ -80,12 +91,14 @@
                 var tag2 = document.createElement('a');
                 var text2 = document.createTextNode('Title: ' + data[keys[i]]['Title']);
                 tag2.href = "http://google.com";
+                tag2.style='text-align:left; background-color:white; color: black; font-weight:bold; text-decoration: none;'
                 tag2.appendChild(text2);
                 var element = document.getElementById("divtwo");
                 element.appendChild(tag2);
 
                 var tag = document.createElement("p");
                 var text = document.createTextNode('Notes: ' + data[keys[i]]['Notes']);
+                tag.style='text-align:left; background-color:white;'
                 tag.appendChild(text);
                 element.appendChild(tag);
             }

@@ -78,7 +78,7 @@ def json_response():
 @app.route('/notes', methods=['GET'])
 def get_notes():
     result = firebase.get('/Notes', None)
-    print(result)
+    # print(result)
     return jsonify(result)
 
 if __name__ == '__main__':
