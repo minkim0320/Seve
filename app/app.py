@@ -1,20 +1,23 @@
 from flask import Flask, render_template, url_for, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from config import config as cfg
+from config import prop as cfg
 import os, io
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 import pandas as pd
 import json
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = cfg.paths["google_api_name"]
-
-client = vision.ImageAnnotatorClient()
+from firebase import firebase
 
 app = Flask(__name__)
 
+# Initialize Google Cloud Configs for Vision AI
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = cfg.paths["google_api_name"]
+client = vision.ImageAnnotatorClient()
 app.config['IMAGE_UPLOADS'] = cfg.paths["image_path"]
+
+# Initialize Firestore
+firebase = firebase.FirebaseApplication(cfg.paths["firebase_url"],None)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
