@@ -27,7 +27,7 @@ def upload_image():
 
             print('Processing Image')
 
-            image.save(os.path.join(app.config['IMAGE_UPLOADS'], image.filename))
+            image.save(os.path.join(app.config['IMAGE_UPLOADS'], 'Notes.JPG'))
 
             print('Image saved')
 
@@ -71,7 +71,7 @@ def json_response():
     print(data['Title'])
     print(data['Notes'])
 
-    # result = firebase.post('/Notes', data)
+    result = firebase.post('/Notes', data)
     # print(result)
     return {}
 
